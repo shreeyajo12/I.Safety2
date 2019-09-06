@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "817328232768",
+    "firebase_url": "https://isafety-caeac.firebaseio.com",
+    "project_id": "isafety-caeac",
+    "storage_bucket": "isafety-caeac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817328232768:android:675c0e187e8c7fadb3c2a5",
+        "android_client_info": {
+          "package_name": "com.example.isafety"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817328232768-9n20lnski2ck7frpb6lpcaa3sldrnjqi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.isafety",
+            "certificate_hash": "2b36603c722455294f47619dab219d1974eaa00e"
+          }
+        },
+        {
+          "client_id": "817328232768-2r4up6njgis5a3kor8sagi1en2c7opan.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbX6uLIvrGJxjtUf7NnysjVXLbw6-ciU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817328232768-2r4up6njgis5a3kor8sagi1en2c7opan.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
