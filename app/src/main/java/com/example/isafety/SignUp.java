@@ -27,7 +27,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     DatabaseReference databaseReference;
     EditText editTextEmail, editTextPassword;
-    String first_name,last_name,phn;
+    String first_name,last_name,phn,email;
     String user_type="0";
     EditText fname, lname, phonenumber;
     private String uid;
@@ -66,7 +66,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         mAuth = FirebaseAuth.getInstance();
     }
-
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -79,7 +78,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         }
     }
     private void registerUser() {
-        String email = editTextEmail.getText().toString().trim();
+        email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         first_name = fname.getText().toString().trim();
         last_name = lname.getText().toString().trim();
@@ -95,13 +94,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             fname.requestFocus();
             return;
         }
-
         if (last_name.isEmpty()) {
             lname.setError("Last name is required");
             lname.requestFocus();
             return;
         }
-
         if (phn.isEmpty()) {
             phonenumber.setError("Phone number is required");
             phonenumber.requestFocus();
@@ -112,20 +109,16 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             editTextEmail.requestFocus();
             return;
         }
-
         if (password.isEmpty()){
             editTextPassword.setError("Password is required");
             editTextPassword.requestFocus();
             return;
         }
-
         if(password.length()<6){
             editTextPassword.setError("Minimum length of password is 6");
             editTextPassword.requestFocus();
             return;
         }
-
-
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -149,6 +142,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         SignUpData signUpData = new SignUpData(first_name,last_name,user_type,phn);
         databaseReference.child("Profile").child(uid).setValue(signUpData);
+        databaseReference.child("userid").child(phn).setValue(uid);
         if(user_type.equals("0")) {
             Intent home = new Intent(getApplicationContext(), HomePage.class);
             startActivity(home);
