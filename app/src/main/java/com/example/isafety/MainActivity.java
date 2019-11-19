@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String uid;
     EditText editTextEmail,editTextPassword;
     private FirebaseAuth mAuth;
+    private Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +39,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextPassword = (EditText)findViewById(R.id.editTextPassword);
 
         findViewById(R.id.signUpActivity).setOnClickListener(this);
-        findViewById(R.id.logIn).setOnClickListener(this);
+        //findViewById(R.id.logIn).setOnClickListener(this);
         findViewById(R.id.forgotPass).setOnClickListener(this);
+
+        login = findViewById(R.id.logIn);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendMessage();
+                sendLocation();
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
     }
+
+    private void sendLocation() {
+
+
+    }
+
+    private void sendMessage() {
+
+
+
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -75,12 +98,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // This method is called once with the ini        at com.example.isafety.Welcome$1.onDataChange(Welcome.java:35)tial value and again
                 // whenever data at this location is updated.
                 if(dataSnapshot.exists()){
-                    startActivity(new Intent(getApplicationContext(),HomePage.class));
-                    finish();
+                    startActivity(new Intent(MainActivity.this, SosHomeActivity.class));
                 }
                 else {
-                    startActivity(new Intent(getApplicationContext(),AdminHomePage.class));
-                    finish();
+                    startActivity(new Intent(MainActivity.this, SignUp.class));
                 }
             }
 
@@ -124,6 +145,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+
+                    startActivity(new Intent(MainActivity.this, SosHomeActivity.class));
                     Toast.makeText(getApplicationContext(),"User logged in",Toast.LENGTH_SHORT).show();
                     switchActivity();
 

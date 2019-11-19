@@ -7,8 +7,8 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.2'
         classpath 'com.google.gms:google-services:4.3.1'
+        classpath 'com.android.tools.build:gradle:3.5.2'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -17,6 +17,12 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url "http://dl.bintray.com/populov/maven" }
+        maven { url "https://jitpack.io" } // For Ucrop
+        maven { url "https://maven.google.com" } // Google's Maven repository - FCM
+        maven {
+            url 'https://dl.bintray.com/azeesoft/maven'
+        }
         google()
         jcenter()
         

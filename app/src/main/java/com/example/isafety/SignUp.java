@@ -123,6 +123,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    startActivity(new Intent(SignUp.this, SosHomeActivity.class));
                     Toast.makeText(getApplicationContext(),"User Registered Successful",Toast.LENGTH_SHORT).show();
                     data();
                 }
@@ -144,8 +145,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         databaseReference.child("Profile").child(uid).setValue(signUpData);
         databaseReference.child("userid").child(phn).setValue(uid);
         if(user_type.equals("0")) {
-            Intent home = new Intent(getApplicationContext(), HomePage.class);
-            startActivity(home);
+            startActivity(new Intent(SignUp.this, SosHomeActivity.class));
             finish();
         }
         if(user_type.equals("1")) {
